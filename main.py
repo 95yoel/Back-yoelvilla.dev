@@ -39,7 +39,7 @@ async def root():
 @app.get("/check")
 async def check_db_connection():
     try:
-        # Intenta ejecutar una consulta simple
+        # Test connection
         cursor = conn.cursor()
         cursor.execute("SELECT 'Conexión exitosa'")
         result = cursor.fetchone()[0]
