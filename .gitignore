@@ -1,0 +1,11 @@
+# Ignore compiled files
+*.pyc
+*.o
+
+# Ignore generated directories
+__pycache__/
+dist/
+build/
+
+# Ignore database configuration file
+database_config.json
