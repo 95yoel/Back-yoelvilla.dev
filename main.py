@@ -1,40 +1,19 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from database_users import connect_to_database
+
+from routes import router # IMPORT ROUTES
+from cors_config import add_cors_middleware # IMPORT CORS CONFIG
 
 
-# Connect to database
-conn = connect_to_database()
 
 app = FastAPI()
 
-
 # CORS CONFIG
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+add_cors_middleware(app)
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/check")
-async def check_db_connection():
-    try:
-        # Test connection
-        cursor = conn.cursor()
-        cursor.execute("SELECT 'Conexión exitosa'")
-        result = cursor.fetchone()[0]
-        cursor.close()
-        return {"message": result}
-    except Exception as e:
-        return {"error": str(e)}
+# ROUTES
+app.include_router(router)
 
 
 if __name__ == "__main__":
