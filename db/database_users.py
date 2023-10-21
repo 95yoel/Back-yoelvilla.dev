@@ -1,8 +1,7 @@
 import json
 import psycopg2
 
-
-
+# function to connect to database
 def connect_to_database():
 
     # acces to database config on json file

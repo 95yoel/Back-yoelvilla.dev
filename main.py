@@ -1,7 +1,6 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from routes import router # IMPORT ROUTES
-from cors_config import add_cors_middleware # IMPORT CORS CONFIG
+from routes.routes import router # IMPORT ROUTES
+from routes.cors_config import add_cors_middleware # IMPORT CORS CONFIG
 
 
 
